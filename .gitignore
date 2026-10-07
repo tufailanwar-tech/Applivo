@@ -1,0 +1,16 @@
+# Environment & Secrets
+.env
+*.log
+logs/
+
+# Database & Uploads
+app.db
+screenshots/
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+.env

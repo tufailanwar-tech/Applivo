@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  applivo-dashboard:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./app.db:/app/app.db
+      - ./screenshots:/app/screenshots
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  applivo-scheduler:
+    build: .
+    command: ["python", "main.py", "--loop", "--interval", "6"]
+    env_file:
+      - .env
+    volumes:
+      - ./app.db:/app/app.db
+      - ./screenshots:/app/screenshots
+      - ./logs:/app/logs
+    restart: unless-stopped
